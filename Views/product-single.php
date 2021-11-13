@@ -14,7 +14,7 @@
     }
 
     if(isset($_POST['comment'])){
-        Controller\Controller::feedback($product_single['id'], $_POST['stars'], $_POST['feedback']);
+        Controller\Controller::feedback($shop_single['id'], $product_single['id'], $_POST['stars'], $_POST['feedback']);
     }
 ?>
 <div class="separator"></div>

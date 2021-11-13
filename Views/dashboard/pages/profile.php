@@ -1,15 +1,19 @@
+<?php
+    $user = Model\Model::getOne('users',"WHERE `id` = '$_SESSION[user_id]'");
+    $info_payment = Model\Model::getOne('info_payment',"WHERE `vendor_id` = '$_SESSION[user_id]'");
+?>
 <section class="profile">
     <div class="head-user">
         <div class="cover"></div>
         <div class="columns-two-bedroom">
             <div>
-                <figure><img src="<?php echo INCLUDE_PATH ?>assets/amanda-doe.jpg" class="user"/></figure>
+                <figure><img src="<?php echo INCLUDE_PATH ?>assets/<?php echo $user['image']; ?>" class="user"/></figure>
             </div>
         <div>
             <ul>
-                <li><i data-feather="at-sign"></i> Htmlstream</li>
-                <li><i data-feather="map-pin"></i> San Francisco, US</li>
-                <li><i data-feather="send"></i>  Joined March 2017</li>
+                <li><i data-feather="at-sign"></i> <?php echo $user['email']; ?></li>
+                <li><i data-feather="map-pin"></i> <?php echo $user['cep']; ?></li>
+                <li><i data-feather="send"></i>  <?php echo $user['id']; ?></li>
             </ul>
         </div>
     </div>
@@ -81,20 +85,29 @@
                 <div class="card-head">
                     <h5>Completed Profile</h5>
                 </div>
+                <?php
+                    $feed = Model\Model::getWhere('ratings',"WHERE `user_id` = '$user[id]'");
+                    foreach($feed as $key => $value){
+                        $product = Model\Model::getOne('products',"WHERE `id` = '$value[product_id]'");
+                ?>
                 <div class="container-body">
                     <ul>
                         <li>
                             <div>
-                                <h4>Task report - uploaded weekly reports</h4>
-                                <p>Added 3 files to task  FD-7 
-                                    <i data-feather="star"></i>
+                                <h4><?php echo $value['feedback']; ?></h4>
+                                <p><?php echo $product['name'] ?>
+                                <?php
+                                    for($i = 0; $i < $value['stars']; $i++){
+                                        echo '<i data-feather="star"></i>';
+                                    }
+                                ?>
                                 </p>
                                 <span class="sub">Today</span>
                             </div>
-                            
                         </li>
                     </ul>
                 </div>
+                <?php } ?>
             </div>
         </div>
     </div>

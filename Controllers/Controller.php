@@ -140,9 +140,9 @@
             }
         }
 
-        public static function feedback($product_id, $stars, $feedback){
-            $create = \MySql::connect()->prepare("INSERT INTO `ratings` VALUES (null, ?, ?, ?)");
-            $create->execute(array($product_id, $stars, $feedback));
+        public static function feedback($shop_id, $product_id, $stars, $feedback){
+            $create = \MySql::connect()->prepare("INSERT INTO `ratings` VALUES (null, ?, ?, ?, ?, ?)");
+            $create->execute(array($shop_id, $_SESSION['user_id'], $product_id, $stars, $feedback));
         }
 
     }

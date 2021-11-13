@@ -1,3 +1,8 @@
+<?php
+    $ratings = ControllerDashboard\ControllerDashboard::countTotal();
+    $shop = Model\Model::getOne('shop',"WHERE `vendor_id` = '$_SESSION[user_id]'");
+?>
+
 <section class="avaliations">
     <div class="card-head flex">
         <h6>Avaliations</h6>
@@ -7,28 +12,28 @@
         <div class="columns-two">
             <div class="columns-two-bedroom">
                 <div><img src="<?php echo INCLUDE_PATH ?>assets/icon-four.svg" /></div>
-                <div><h2>4.84</h2> <p class="info">— of 7 reviews</p></div>
+                <div><h2><?php echo $ratings; ?></h2> <p class="info">— of 7 reviews</p></div>
             </div>
 
             <div>
                 <div class="layout">
-                    <span class="info">5 Stars</span> <div class="bar"><div style="width: 50%;" class="progress"></div></div> <span class="info">82%</span>
+                    <span class="info"><?php echo count(ControllerDashboard\ControllerDashboard::countRatings(5)); ?> Stars</span> <div class="bar"><div style="width: <?php echo count(ControllerDashboard\ControllerDashboard::countRatings(5)); ?>%;" class="progress"></div></div>
                 </div>
  
                 <div class="layout">
-                    <span class="info"> 4 Stars</span> <div class="bar"><div style="width: 50%;" class="progress"></div></div> <span class="info">82%</span>
+                    <span class="info"><?php echo count(ControllerDashboard\ControllerDashboard::countRatings(4)); ?> Stars</span> <div class="bar"><div style="width: <?php echo count(ControllerDashboard\ControllerDashboard::countRatings(4)); ?>%;" class="progress"></div></div>
                 </div>
 
                 <div class="layout">
-                    <span class="info">3 Stars</span> <div class="bar"><div style="width: 50%;" class="progress"></div></div> <span class="info">82%</span>
+                    <span class="info"><?php echo count(ControllerDashboard\ControllerDashboard::countRatings(3)); ?> Stars</span> <div class="bar"><div style="width: <?php echo count(ControllerDashboard\ControllerDashboard::countRatings(3)); ?>%;" class="progress"></div></div>
                 </div>
 
                 <div class="layout">
-                    <span class="info">2 Stars</span> <div class="bar"><div style="width: 50%;" class="progress"></div></div> <span class="info">82%</span>
+                    <span class="info"><?php echo count(ControllerDashboard\ControllerDashboard::countRatings(2)); ?> Stars</span> <div class="bar"><div style="width: <?php echo count(ControllerDashboard\ControllerDashboard::countRatings(2)); ?>%;" class="progress"></div></div>
                 </div>
 
                 <div class="layout">
-                    <span class="info">1 Star</span> <div class="bar"><div style="width: 50%;" class="progress"></div></div> <span class="info">82%</span>
+                    <span class="info"><?php echo count(ControllerDashboard\ControllerDashboard::countRatings(1)); ?> Star</span> <div class="bar"><div style="width: <?php echo count(ControllerDashboard\ControllerDashboard::countRatings(1)); ?>%;" class="progress"></div></div>
                 </div>
 
             </div>
@@ -52,17 +57,23 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php
+                        $avaliations = Model\Model::getWhere('ratings',"WHERE `shop_id` = '$shop[id]'");
+                        foreach($avaliations as $key => $value){
+                            $user = Model\Model::getOne('users',"WHERE `id` = '$value[user_id]'");
+                    ?>
                     <tr>
                         <td class="two">
-                            <div><img class="square" src="<?php echo INCLUDE_PATH ?>assets/amanda-doe.jpg"/></div>
-                            <div><h4>Amanda doe</h4></div>
+                            <div><img class="square" src="<?php echo INCLUDE_PATH ?>assets/<?php echo $user['image']; ?>"/></div>
+                            <div><h4><?php echo $user['name'] ?></h4></div>
                         </td>
                         <td><div class="status active"></div> Success</td>
                         <td>Unassigned</td>
-                        <td>amanda@example.com</td>
-                        <td>1 year ago</td>
-                        <td>67989</td>
+                        <td><?php echo $user['email'] ?></td>
+                        <td><?php echo $value['stars']; ?></td>
+                        <td><?php echo $value['product_id'] ?></td>
                     </tr>
+                    <?php } ?>
                 </tbody>
             </table>
         </div>

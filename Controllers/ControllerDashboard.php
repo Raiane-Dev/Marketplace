@@ -143,6 +143,30 @@
             \Model\Model::uploadFile($images);
             \Model\Model::alert("Product registered successfully.");
         }
+
+
+        public static function countRatings($star){
+            $shop = \MySql::connect()->prepare("SELECT * FROM `shop` WHERE `vendor_id` = '$_SESSION[user_id]'");
+            $shop->execute();
+            $shop = $shop->fetch();
+
+            $ratings = \MySql::connect()->prepare("SELECT * FROM `ratings` WHERE stars = '$star' AND `shop_id` = '$shop[id]'");
+            $ratings->execute();
+            $ratings = $ratings->fetchAll();
+
+            return $ratings;
+        }
+
+        public static function countTotal(){
+            $calcOne = (5*count(self::countRatings(5)) + 4*count(self::countRatings(4)) + 3*count(self::countRatings(3)) + 2*count(self::countRatings(2)) + 1*count(self::countRatings(1)));
+            $calcTwo = (count(self::countRatings(5)) + count(self::countRatings(4)) + count(self::countRatings(3)) + count(self::countRatings(2)) + count(self::countRatings(1)));
+
+            if($calcOne == 0 || $calcTwo == 0){
+                $calcOne = $calcTwo = 1;
+            }
+            $result = intdiv($calcOne, $calcTwo);
+            return $result;
+        }
     }
 
 ?>

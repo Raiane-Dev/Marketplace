@@ -71,7 +71,7 @@
         $vendor_percentage = ($amount / 100) * (90);
         $vendor_percentage_format = $vendor_percentage * 100;
 
-        $this->endpoint = '/v1/charges';
+        $this->endpoint = '/v1/payment_intents';
         $this->data = [
             "amount"                      => $amount,
             "currency"                    => "brl",

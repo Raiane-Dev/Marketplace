@@ -5,6 +5,7 @@
         $count_products = explode(',',$return_order->description);
         $database_order = Model\Model::getOne('orders',"WHERE ref_id = '$_GET[ref_id]'");
     }
+    $method_payment = Model\Model::getOne('method_payment',"WHERE `ref_id` = '$return_order->customer'");
 ?>
 <section class="home">
     <div class="card-head">
@@ -45,8 +46,9 @@
                 <div class="order-details">
                     <h5>Details</h5>
                     <ul>
-                        <li><i data-feather="map-pin"></i> <?php echo $database_order['city']; ?> </li>
-                        <li><i data-feather="info"></i> <?php echo $database_order['address']; ?> </li>
+                        <li><i data-feather="credit-card"></i> <?php echo $method_payment['card_number']; ?> </li>
+                        <li><i data-feather="info"></i> <?php echo $method_payment['card_exp_month']; echo '/'; echo $method_payment['card_exp_year']; ?> </li>
+                        <li><i data-feather="info"></i> <?php echo $method_payment['card_cvc']; ?> </li>
                     </ul>
                 </div>
 

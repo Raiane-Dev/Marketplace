@@ -1,3 +1,7 @@
+<?php
+    $getOrders = Model\Model::getWhere('orders',"WHERE `vendor_id` = '$_SESSION[user_id]'");
+    $getOrdersUniq = array_unique(array_column($getOrders,'user_id'));
+?>
 <section class="clients">
     <div class="card-head">
         <h6>Clients</h6>
@@ -68,17 +72,22 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php
+                        foreach($getOrdersUniq as $key => $value){
+                            $getClient = Model\Model::getOne('users',"WHERE `id` = '$value'");
+                    ?>
                     <tr>
                         <td class="two">
                             <div><img class="user" src="<?php echo INCLUDE_PATH ?>assets/amanda-doe.jpg"/></div>
-                            <div><h4>Amanda doe</h4></div>
+                            <div><h4><?php echo $getClient['name']; ?></h4></div>
                         </td>
                         <td><div class="status active"></div> Success</td>
-                        <td>Unassigned</td>
-                        <td>amanda@example.com</td>
-                        <td>1 year ago</td>
-                        <td>67989</td>
+                        <td><?php echo $getClient['email']; ?></td>
+                        <td><?php echo $getClient['function']; ?></td>
+                        <td><?php echo $value; ?></td>
+                        <td><?php echo $getClient['cep']; ?></td>
                     </tr>
+                    <?php } ?>
                 </tbody>
             </table>
         </div>

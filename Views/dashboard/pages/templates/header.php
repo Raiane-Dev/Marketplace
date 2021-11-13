@@ -36,11 +36,11 @@
                     <li><i data-feather="shopping-bag"></i> <a href="<?php echo INCLUDE_PATH_DASHBOARD_URL ?>settins?payment-config">Orders</a></li>
                     <li><i data-feather="user-plus"></i> <a href="<?php echo INCLUDE_PATH_DASHBOARD_URL ?>add-user">Add User</a></li>
                     <li><i data-feather="message-square"></i> <a href="<?php echo INCLUDE_PATH_DASHBOARD_URL ?>avaliations">Avaliations</a></li>
-                    <li><i data-feather="users"></i> <a href="<?php echo INCLUDE_PATH_DASHBOARD_URL ?>members">Employees</a></li>
+                    <li><i data-feather="users"></i> <a href="<?php echo INCLUDE_PATH_DASHBOARD_URL ?>clients">Clients</a></li>
                     <li><i data-feather="clipboard"></i> <a href="<?php echo INCLUDE_PATH_DASHBOARD_URL ?>add-product">Add Product</a></li>
-                    <li><i data-feather="home"></i> <a href="<?php echo INCLUDE_PATH_DASHBOARD_URL ?>">Home</a></li>
+                    <li><i data-feather="box"></i> <a href="<?php echo INCLUDE_PATH_DASHBOARD_URL ?>orders">Orders</a></li>
                     <li><i data-feather="user"></i> <a href="<?php echo INCLUDE_PATH_DASHBOARD_URL ?>profile">Profile</a></li>
-                    <li><i data-feather="camera"></i> <a href="<?php echo INCLUDE_PATH_DASHBOARD_URL ?>">Images & Uploads</a></li>
+                    <li><i data-feather="camera"></i> <a href="<?php echo INCLUDE_PATH_DASHBOARD_URL ?>settings?images-uploads">Images & Uploads</a></li>
                     <li><i data-feather="settings"></i> <a href="<?php echo INCLUDE_PATH_DASHBOARD_URL ?>settings">Settings</a></li>
                 </ul>
             </nav>
