@@ -52,7 +52,33 @@ Para o checkout eu fiz os pedidos serem separados, pois é muito mais seguro.</s
 
 https://user-images.githubusercontent.com/89032013/141662433-4bfe854f-382c-4432-b714-91cea09753df.mp4
 
+##
+<span>Observações <br />
+      O usuário tem total monitoramento de seus clientes. O usuário que comprar dessa loja terá seu pedido cadastrado, e automaticamente se torna um cliente daquela loja. <br />
+</span>
 
+
+https://user-images.githubusercontent.com/89032013/141680906-f8daac7c-dfec-4ff9-adb7-a110860de392.mp4
+
+##
+
+https://user-images.githubusercontent.com/89032013/141681003-fea47706-756f-41f8-a32d-0f1a1ded21d6.mp4
+
+##
+
+https://user-images.githubusercontent.com/89032013/141681232-b7db1f92-fbbb-4d11-bed0-ce7d8104bad3.mp4
+
+##
+
+https://user-images.githubusercontent.com/89032013/141681224-0fcfba4a-d3de-410b-9d4c-6b713a9d8665.mp4
+
+##
+
+https://user-images.githubusercontent.com/89032013/141681326-80d54744-7b6e-4420-9bcb-4923860325c7.mp4
+
+##
+
+https://user-images.githubusercontent.com/89032013/141681415-74729985-9a18-4520-81b2-3d29a3964a57.mp4
 
 
 <h5>Agradeço a quem ficou até aqui, até logo.</h5>
