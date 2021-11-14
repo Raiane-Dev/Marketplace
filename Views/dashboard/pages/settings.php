@@ -376,13 +376,13 @@
                 <!--IMAGES & UPLOADS-->
                 <?php if(isset($_GET['images-uploads'])){ 
                     if(isset($_POST['send'])){
-                        Model\Model::uploadFile($_POST['upload']);
+                        Model\Model::uploadFile($_FILES['upload']);
                     }
                 ?>
                 <div class="separator"></div>
                 <div class="column-one">
                     <div class="container">
-                        <form method="post">
+                        <form method="post" enctype="multipart/form-data">
                         <div class="card-head flex">
                             <div><input type="submit" name="send" value="Send" /></div>
                             <div><input type="file" name="upload" style="display:none;" id="upload"/>
