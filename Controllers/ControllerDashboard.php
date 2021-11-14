@@ -25,6 +25,9 @@
 
         public static function register($name, $email, $password, $image, $function, $cep, $lat_coord, $long_coord){
             \Model\Model::uploadFile($image);
+             if($image == ''){
+                $image = 'user.png';
+            }
             $register = \MySql::connect()->prepare("INSERT INTO `users` VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?)");
             $register->execute(array($name, $email, $password, $image['name'], $function, $cep, $lat_coord, $long_coord));
 
