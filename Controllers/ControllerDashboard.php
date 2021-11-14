@@ -107,7 +107,7 @@
 
         public static function storePolicies($privacy_policy, $shipping_policy, $refund_policy,$shop_id){
             $update = \MySql::connect()->prepare("UPDATE `shop_policies` SET `privacy_policy` = ?, `shipping_policy` = ?, `refund_policy` = ? WHERE `shop_id` = '$shop_id'");
-            $update->execute($privacy_policy, $shipping_policy, $refund_policy);
+            $update->execute(array($privacy_policy, $shipping_policy, $refund_policy));
         }
 
         public static function schedulesConfig($open_since, $close_until, $days_week, $shop_id){
