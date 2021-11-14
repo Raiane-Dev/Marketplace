@@ -43,4 +43,16 @@ Chegando no
 checkout verificamos se a loja contém algum cupom de desconto compatível com aquele código e se o id da loja é o mesmo id da loja que foi para o checkout, se essa validação for true criamos uma conta básica de matemática contendo o valor do envio, mais o valor do amount e menos a porcentagem de desconto que essa loja ofereceu.
 Para o checkout eu fiz os pedidos serem separados, pois é muito mais seguro.</span>
 
+
+<span>Observações do vídeo: <br />
+      Quando o usuário insere um cupom inválido (que foi o caso da primeira tentativa que está no vídeo) aparece imediatamente um alert com a mensagem de erro pois o cupom é           inválido.
+      O desconto do segundo cupom que é válido tinha 20% de desconto. Por isso o valor do produto com o valor do frete e menos o desconto deu aquele total final.
+</span>
+
+
+https://user-images.githubusercontent.com/89032013/141662433-4bfe854f-382c-4432-b714-91cea09753df.mp4
+
+
+
+
 <h5>Agradeço a quem ficou até aqui, até logo.</h5>
