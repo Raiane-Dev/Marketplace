@@ -27,7 +27,24 @@
             \Model\Model::uploadFile($image);
             $register = \MySql::connect()->prepare("INSERT INTO `users` VALUES (null, ?, ?, ?, ?, ?, ?, ?, ?)");
             $register->execute(array($name, $email, $password, $image['name'], $function, $cep, $lat_coord, $long_coord));
-            $_SESSION['login'] = true;
+
+            $verify = \MySql::connect()->prepare("SELECT * FROM `users` WHERE `email` = ? AND `password` = ?");
+            $verify->execute(array($email,$password));
+            $info = $verify->fetch();
+            if($verify->rowCount() == 1){
+                $_SESSION['login'] = true;
+                $_SESSION['user_id'] = $info['id'];
+                $_SESSION['name'] = $info['name'];
+                $_SESSION['email'] = $info['email'];
+                $_SESSION['password'] = $info['password'];
+                $_SESSION['image'] = $info['image'];
+                $_SESSION['function'] = $info['function'];
+                $_SESSION['cep'] = $info['cep'];
+                $_SESSION['lat_coord'] = $info['lat_coord'];
+                $_SESSION['long_coor'] = $info['long_coord'];
+            }
+            $register_shop = \MySql::connect()->prepare("INSERT INTO `shop` VALUES (null, ?, ?, ?, ?, ?)");
+            $register_shop->execute(array($_SESSION['user_id'], '', '', '', ''));
         }
 
         public static function login($email, $password){
