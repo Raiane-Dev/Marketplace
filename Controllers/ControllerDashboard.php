@@ -111,8 +111,8 @@
         }
 
         public static function schedulesConfig($open_since, $close_until, $days_week, $shop_id){
-            $update = \MySql::connect()->prepare("UPDATE `shop_schedules` SET `open_since` = ?, `close_until` = ?, `days_week` = ? WHERE `shop_id` = '$shop_id'");
-            $update->execute(array($open_since, $close_until, $days_week));
+            $update = \MySql::connect()->prepare("INSERT INTO `shop_schedules` VALUES (null, ?, ?, ?, ?)");
+            $update->execute(array($shop_id, $open_since, $close_until, $days_week));
         }
 
         public static function createCoupons($shop_id, $code, $discount, $duration){
