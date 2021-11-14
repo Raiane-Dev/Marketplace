@@ -104,10 +104,10 @@
             $update = \MySql::connect()->prepare("UPDATE `users` SET `lat_coord` = ?, `long_coord` = ?, `cep` = ? WHERE `id` = '$_SESSION[user_id]'");
             $update->execute(array($lat_coord, $long_coord, $cep));
         }
-
+        
         public static function storePolicies($privacy_policy, $shipping_policy, $refund_policy,$shop_id){
-            $update = \MySql::connect()->prepare("UPDATE `shop_policies` SET `privacy_policy` = ?, `shipping_policy` = ?, `refund_policy` = ? WHERE `shop_id` = '$shop_id'");
-            $update->execute(array($privacy_policy, $shipping_policy, $refund_policy));
+            $update = \MySql::connect()->prepare("INSERT INTO `shop_policies` VALUES (null, ?, ?, ?, ?)");
+            $update->execute(array($shop_id, $privacy_policy, $shipping_policy, $refund_policy));
         }
 
         public static function schedulesConfig($open_since, $close_until, $days_week, $shop_id){
